@@ -23,7 +23,7 @@
     <style>
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px;
+            scroll-padding-top: 120px;
         }
         .bangla-logo{
             font-family: "Tiro Bangla", serif;
@@ -34,13 +34,17 @@
         .english{
             font-family: "Poppins", sans-serif;
         }
+        .active {
+            background:#422AD5;
+            color: white;
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
    <header>
     <!-- navbar -->
-     <nav class="sticky top-0 z-index: 1000">
+     <nav class="fixed top-0 left-0 w-full z-index:1000">
         <div class="navbar bg-base-200 shadow-sm py-7 px-20 border-b-2 border-[#C6BDBD]">
             <div class="flex-1">
               <a class="btn btn-ghost text-xl">
@@ -56,15 +60,15 @@
           </div>
      </nav>
      <!-- hero section -->
-     <section id="hero" class="my-5 flex justify-evenly items-center gap-5">
+     <section id="hero" class=" flex justify-evenly items-center gap-x-20 pt-20">
         <div class="flex flex-col gap-5 p-20">
             <h1 class="english font-bold text-5xl"><span class="text-[#00BCFF]">English</span> is Easy!!</h1>
             <p class="bangla text-[#18181B] font-medium">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা <br> আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে <br> যাবে অন্য একটি Level এ</p>
               <form class="flex flex-col">
-                <input type="text" class="w-[320px] p-1 border-[#18181B50]" placeholder="Enter Your Name" required/> <br>
-              <input type="password" class="w-[320px] p-1 border-[#18181B50]" placeholder="Enter Login Pin (123456)" required/>
+                <input id="name" type="text" class="w-[320px] p-1 border-[#18181B50]" placeholder="Enter Your Name" required/> <br>
+              <input id="pass" type="password" class="w-[320px] p-1 border-[#18181B50]" placeholder="Enter Login Pin (123456)" required/>
               <div>
-                <button class="btn btn-primary mt-4">Get Started</button>
+                <button id="start" class="btn btn-primary mt-4">Get Started</button>
            </div>
               </form>
             
@@ -77,8 +81,55 @@
    </header>
 
    <!-- main -->
-   <main>
-    <section id="faq" class="w-11/12 mx-auto my-20 space-y-3">
+   <main id="main">
+
+    <!-- Learn Section -->
+    <article id="learn" class="w-11/12 mx-auto text-center flex justify-center items-center flex-col gap-6 my-20 p-10">
+        <h1 class="english font-bold text-5xl"><span class="text-[#00BCFF]">Let's</span>Learn Vocabularies</h1>
+        <div id="btn-container" class="flex gap-2">
+        </div>
+        <div id="content" class="w-full mt-4 mx-auto bg-base-200 p-20 rounded-sm">
+            <p class="bangla text-[#79716B]">আপনি এখনো কোন Lesson Select করেননি</p>
+            <p class="bangla english font-medium text-[24px]">একটি Lesson Select করুন।</p>
+        </div>
+        <section id="card-container" class="p-10 grid grid-cols-3 gap-3  bg-base-200">
+            
+        </section>
+    </article>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="w-11/12 mx-auto my-20 space-y-3 z-0 ">
+        <div class="collapse collapse-plus bg-base-300 border border-base-300">
+            <input type="radio" name="my-accordion-3" checked="checked" />
+            <div class="collapse-title  font-medium text-[16px]">1. Difference Between var, let, and const</div>
+            <div class="collapse-content text-sm">var is function-scoped and allows redeclaration, let is block-scoped and allows reassignment, while const is block-scoped and cannot be reassigned.</div>
+          </div>
+
+        <div class="collapse collapse-plus bg-base-300 border border-base-300">
+            <input type="radio" name="my-accordion-3" checked="checked" />
+            <div class="collapse-title  font-medium text-[16px]">2. Difference Between map(), forEach(), and filter()</div>
+            <div class="collapse-content text-sm"> map() creates a new array with transformed elements, forEach() executes a function on each element without returning anything, and filter() creates a new array with elements that pass a test.</div>
+          </div>
+
+        <div class="collapse collapse-plus bg-base-300 border border-base-300">
+            <input type="radio" name="my-accordion-3" checked="checked" />
+            <div class="collapse-title font-medium text-[16px]">3. Arrow Functions and Their Difference from Regular Functions</div>
+            <div class="collapse-content text-sm"> Arrow functions are shorter, don’t have their own this (they inherit it from the parent scope), and can't be used as constructors.</div>
+          </div>
+
+          <div class="collapse collapse-plus bg-base-300 border border-base-300">
+            <input type="radio" name="my-accordion-3" />
+            <div class="collapse-title  font-medium text-[16px]">4. How JavaScript Promises Work</div>
+            <div class="collapse-content text-sm"> Promises represent the eventual completion (or failure) of an asynchronous operation and its resulting value, allowing chaining with .then() and handling errors with .catch().</div>
+          </div>
+
+          <div class="collapse collapse-plus bg-base-300 border border-base-300">
+            <input type="radio" name="my-accordion-3" />
+            <div class="collapse-title font-medium text-[16px]">5. How Closures Work in JavaScript</div>
+            <div class="collapse-content text-sm">A closure is a function that retains access to variables from its lexical scope, even after the outer function has finished executing.</div>
+          </div>
+    </section>
+    <!-- <section id="faq" class="w-11/12 mx-auto my-20 space-y-3">
         <div class="collapse collapse-plus bg-base-300 border border-base-300">
             <input type="radio" name="my-accordion-3" checked="checked" />
             <div class="collapse-title  font-medium text-[16px]">1. How can I start learning English on this website?</div>
@@ -108,7 +159,7 @@
             <div class="collapse-title font-medium text-[16px]">5. Do you offer certificates for completed courses?</div>
             <div class="collapse-content text-sm"> Yes, we provide certificates upon successful course completion! 🎓😊</div>
           </div>
-    </section>
+    </section> -->
    </main>
 
    <!-- Footer -->
@@ -165,6 +216,7 @@
    </footer>
 
     <!-- script -->
+     <script src="./script/login.js"></script>
      <script src="./script/script.js"></script>
 </body>
 </html>
