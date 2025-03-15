@@ -40,6 +40,7 @@ const clickWord =async (id)=>{
 }
 
 const showCard = (card)=>{
+    console.log(card);
         let modal = document.getElementById('modal_details');
         let modalContent = document.getElementById('modal-content');
           modalContent.innerHTML = `
@@ -56,7 +57,7 @@ const showCard = (card)=>{
         </div>
         <p class="font-semibold bangla">সমার্থক শব্দ গুলো</p>
         <div>
-        ${card.synonyms ? `<span class="p-2 bg-base-300">${card.synonyms.join(' ')}</span>` : '<span class="p-2 bg-base-200">No synonyms available</span>'}
+        ${card.synonyms ? `<span class="p-2 bg-base-300">${card.synonyms.join('  ')}</span>` : '<span class="p-2 bg-base-200">No synonyms available</span>'}
         </div>
           <div class="modal-start">
           <form method="dialog">
@@ -68,6 +69,12 @@ const showCard = (card)=>{
        
    
 }
+
+
+
+
+
+
 
 
 allWord()

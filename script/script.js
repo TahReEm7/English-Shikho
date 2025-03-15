@@ -41,7 +41,6 @@ let displayCard = (data) => {
     }
     
         data.forEach((card) => {
-
         let div = document.createElement("div");
             div.innerHTML = `
             <div class="flex flex-col bg-white text-center justify-center items-center gap-4 shadow-lg rounded-md p-20 m-5">
@@ -49,7 +48,7 @@ let displayCard = (data) => {
                 <p  class="english">Meaning / Pronunciation</p>
                 <p class="bangla font-semibold text-[18px] text-[#18181B]"><span>${card.meaning}</span> / <span>${card.pronunciation}</span></p>
                 <div class="grid grid-cols-8 mt-5">
-                    <button onclick="modal_details.showModal('${card.id}')" class="col-span-1"> <i class="fa-solid p-3 rounded-sm fa-circle-info bg-[#1A91FF10] cursor-pointer"></i></button>
+                    <button id="${card.id}" onclick="modal_details.showModal('${card.id}')" class="col-span-1"> <i class="fa-solid p-3 rounded-sm fa-circle-info bg-[#1A91FF10] cursor-pointer"></i></button>
                     <span class="col-span-6"></span>
                     <p class="col-span-1"> <i class="p-3 rounded-sm fa-solid fa-volume-high bg-[#1A91FF10]"></i></p>
                 </div>
