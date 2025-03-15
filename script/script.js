@@ -49,14 +49,14 @@ let displayCard = (data) => {
                 <p  class="english">Meaning / Pronunciation</p>
                 <p class="bangla font-semibold text-[18px] text-[#18181B]"><span>${card.meaning}</span> / <span>${card.pronunciation}</span></p>
                 <div class="grid grid-cols-8 mt-5">
-                    <p class="col-span-1"> <i id="${card.id}" onclick="modal_details.showModal('${card.id}')" class="fa-solid p-3 rounded-sm fa-circle-info bg-[#1A91FF10] cursor-pointer"></i></p>
+                    <button onclick="modal_details.showModal('${card.id}')" class="col-span-1"> <i class="fa-solid p-3 rounded-sm fa-circle-info bg-[#1A91FF10] cursor-pointer"></i></button>
                     <span class="col-span-6"></span>
                     <p class="col-span-1"> <i class="p-3 rounded-sm fa-solid fa-volume-high bg-[#1A91FF10]"></i></p>
                 </div>
             </div>
         `;
         
-       document.getElementById("content").style.display='none'
+        document.getElementById("content").style.display='none'
         document.getElementById("card-container").style.display='grid'
 
         cardContainer.appendChild(div);
@@ -66,36 +66,21 @@ let displayCard = (data) => {
 
 
 
-let lessons = (data) => {
-    
+const lessons = (level) => {
     let lessonsContainer = document.getElementById("btn-container");
-    
-    let div = document.createElement("div");
-   
-    div.innerHTML = `
-        <button id="btn-${data}" onclick="clickLesson('${data}')" class="btn btn-outline btn-primary">
-            <i class="fa-solid fa-book-open"></i>Lesson-${data}
-        </button>
-    `;
-
-    lessonsContainer.appendChild(div);
-   
-   
-  
-}
-
-document.addEventListener("click", () => {
-    const container = document.getElementById("btn-container");
-
-    container.addEventListener("click", (e) => {
-        if (e.target.classList.contains("btn")) {
-            document.querySelectorAll(".btn").forEach((b) => b.classList.remove("active"));
-            e.target.classList.add("active");
-        }
+    let button = document.createElement("button");
+    button.classList.add("btn", "btn-outline", "btn-primary");
+    button.innerHTML = `<i class="fa-solid fa-book-open"></i> Lesson-${level}`;
+    button.addEventListener("click", () => {
+        clickLesson(level);
+        document.querySelectorAll(".btn").forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
     });
-});
+    lessonsContainer.appendChild(button);
+};
+
+
 
 
 allAPI();
-
 
