@@ -55,7 +55,7 @@
             <div class="flex gap-3">
               <a href="#faq"><button class="btn btn-outline btn-primary"><i class="fa-solid fa-circle-question"></i>FAQ</button></a>
              <a href="#learn"> <button class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open"></i>Learn</button></a>
-             <a href="#logout"> <button class="btn btn-outline btn-primary"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button></a>
+             <a href="#logout"> <button id="Logout" class="btn btn-outline btn-primary"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button></a>
             </div>
           </div>
      </nav>
@@ -66,7 +66,7 @@
             <p class="bangla text-[#18181B] font-medium">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা <br> আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে <br> যাবে অন্য একটি Level এ</p>
               <form class="flex flex-col">
                 <input id="name" type="text" class="w-[320px] p-1 border-[#18181B50]" placeholder="Enter Your Name" required/> <br>
-              <input id="pass" type="password" class="w-[320px] p-1 border-[#18181B50]" placeholder="Enter Login Pin (123456)" required/>
+              <input id="pass" value="123456" type="password" class="w-[320px] p-1 border-[#18181B50]" placeholder="Enter Login Pin (123456)" required/>
               <div>
                 <button id="start" class="btn btn-primary mt-4">Get Started</button>
            </div>
@@ -85,7 +85,7 @@
 
     <!-- Learn Section -->
     <article id="learn" class="w-11/12 mx-auto text-center flex justify-center items-center flex-col gap-6 my-20 p-10">
-        <h1 class="english font-bold text-5xl"><span class="text-[#00BCFF]">Let's</span>Learn Vocabularies</h1>
+        <h1 class="english font-bold text-5xl"><span class="text-[#00BCFF]">Let's </span>Learn Vocabularies</h1>
         <div id="btn-container" class="flex gap-2">
         </div>
         <div id="content" class="w-full mt-4 mx-auto bg-base-200 p-20 rounded-sm">
@@ -96,6 +96,18 @@
             
         </section>
     </article>
+
+
+   
+    <!-- Open the modal using ID.showModal() method -->
+    <dialog id="modal_details" class="modal">
+      <div class="modal-box overflow-hidden">
+        <div id="modal-content" class=" bg-base-100 m-2 w-full overflow-hidden flex flex-col gap-3">
+          
+      </div>
+    </dialog>
+    <!-- modal end -->
+
 
     <!-- FAQ Section -->
     <section id="faq" class="w-11/12 mx-auto my-20 space-y-3 z-0 ">
@@ -218,5 +230,7 @@
     <!-- script -->
      <script src="./script/login.js"></script>
      <script src="./script/script.js"></script>
+    <script src="./script/sricpt2.js"></script>
+
 </body>
 </html>
