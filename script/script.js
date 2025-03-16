@@ -34,7 +34,7 @@ let displayCard = (data) => {
     
     if(data.length === 0){
         return cardContainer.innerHTML = `
-        <div class="col-span-3 flex flex-col justify-center text-center items-center  my-10 mx-auto bg-base-200 px-[420px] rounded-md gap-3">
+        <div class="col-span-3 flex flex-col justify-center text-center items-center py-3 mx-auto bg-base-200 px-[420px] rounded-lg gap-3">
            <div>
             <img class="w-[60px]" src="./assets/alert-error.png" alt="">
            </div>
@@ -54,7 +54,7 @@ let displayCard = (data) => {
                 <div class="grid grid-cols-8 mt-5">
                     <button onclick="loadCard('${card.id}')" class="cursor-pointer col-span-1"> <i class="fa-solid p-3 rounded-sm fa-circle-info bg-[#1A91FF10] "></i></button>
                     <span class="col-span-6"></span>
-                    <button class="col-span-1 cursor-pointer"> <i class="p-3 rounded-sm fa-solid fa-volume-high bg-[#1A91FF10]"></i></button>
+                    <button onclick="pronounceWord('${card.word}')" class="col-span-1 cursor-pointer"> <i class="p-3 rounded-sm fa-solid fa-volume-high bg-[#1A91FF10]"></i></button>
                 </div>
             </div>
         `;
@@ -66,6 +66,13 @@ let displayCard = (data) => {
     }); 
 
 };
+
+function pronounceWord(word) {
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'en-EN'; 
+    window.speechSynthesis.speak(utterance);
+  }
+
 const lessons = (level) => {
     let lessonsContainer = document.getElementById("btn-container");
     let button = document.createElement("button");

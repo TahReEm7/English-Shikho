@@ -15,9 +15,11 @@ const allWord = async () => {
 }
 
 const loadCard =async (id)=>{
+
     let response = await fetch(`https://openapi.programming-hero.com/api/word/${id}`);
     let data = await response.json();
-    showCard(data.data);   
+    showCard(data.data); 
+
 }
 
 
