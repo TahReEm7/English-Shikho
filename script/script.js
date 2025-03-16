@@ -1,5 +1,6 @@
 
 const allAPI = async () => {
+    showLoader()
     try {
         let response = await fetch('https://openapi.programming-hero.com/api/levels/all');
         let data = await response.json();
@@ -15,12 +16,15 @@ const allAPI = async () => {
     } catch (error) {
         console.error('Error fetching data:', error);
     }
-
+hideLoader()
 }
 let clickLesson = async (id) => {
+    showLoader()
     let response = await fetch(`https://openapi.programming-hero.com/api/level/${id}`);
     let data = await response.json();
         displayCard(data.data);
+
+        hideLoader()
 };
  document.getElementById("card-container").style.display='none'
 
@@ -43,14 +47,14 @@ let displayCard = (data) => {
         data.forEach((card) => {
         let div = document.createElement("div");
             div.innerHTML = `
-            <div class="flex flex-col bg-white text-center justify-center items-center gap-4 shadow-lg rounded-md p-20 m-5">
+            <div class="flex flex-col bg-white text-center justify-center items-center gap-4 shadow-lg rounded-md p-20 m-5  hover:bg-sky-200">
                 <p class="english font-bold text-[24px]">${card.word}</p>
                 <p  class="english">Meaning / Pronunciation</p>
-                <p class="bangla font-semibold text-[18px] text-[#18181B]"><span>${card.meaning}</span> / <span>${card.pronunciation}</span></p>
+                <p class="bangla font-semibold text-[18px] text-[#18181B]"><span>${card.meaning ? `${card.meaning}`:`অর্থ নেই`}</span> / <span>${card.pronunciation}</span></p>
                 <div class="grid grid-cols-8 mt-5">
-                    <button id="${card.id}" onclick="modal_details.showModal('${card.id}')" class="col-span-1"> <i class="fa-solid p-3 rounded-sm fa-circle-info bg-[#1A91FF10] cursor-pointer"></i></button>
+                    <button onclick="loadCard('${card.id}')" class="cursor-pointer col-span-1"> <i class="fa-solid p-3 rounded-sm fa-circle-info bg-[#1A91FF10] "></i></button>
                     <span class="col-span-6"></span>
-                    <p class="col-span-1"> <i class="p-3 rounded-sm fa-solid fa-volume-high bg-[#1A91FF10]"></i></p>
+                    <button class="col-span-1 cursor-pointer"> <i class="p-3 rounded-sm fa-solid fa-volume-high bg-[#1A91FF10]"></i></button>
                 </div>
             </div>
         `;
@@ -62,9 +66,6 @@ let displayCard = (data) => {
     }); 
 
 };
-
-
-
 const lessons = (level) => {
     let lessonsContainer = document.getElementById("btn-container");
     let button = document.createElement("button");
@@ -77,9 +78,4 @@ const lessons = (level) => {
     });
     lessonsContainer.appendChild(button);
 };
-
-
-
-
 allAPI();
-
