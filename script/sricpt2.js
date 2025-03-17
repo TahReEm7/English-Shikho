@@ -41,7 +41,7 @@ const showCard = (card)=>{
         </div>
         <p class="font-semibold bangla">সমার্থক শব্দ গুলো</p>
         <div>
-         <p class="font-medium english"> ${card.synonyms ? `<span class="p-2 bg-base-300">${card.synonyms.join(' / ')}</span>` : `No synonyms available`}</p>
+         <p class="font-medium english"> ${card.synonyms ? `${card.synonyms.map(synonym => `<p class="btn">${synonym}</p>`).join(" ")}</p>` : `No synonyms available`}</p>
         </div>
       </div>
           `  
